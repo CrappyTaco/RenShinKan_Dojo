@@ -1,6 +1,8 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 declare const process: {
   env: Record<string, string | undefined>;
 };
@@ -23,5 +25,5 @@ function normalizeBasePath(basePath?: string) {
 
 export default defineConfig({
   base: normalizeBasePath(process.env.BASE_PATH),
-  plugins: [react()],
+  plugins: [react(), cloudflare()],
 });
